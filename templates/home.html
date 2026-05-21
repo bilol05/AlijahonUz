@@ -1,0 +1,1816 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>
+        Internet do'kon O'zbekiston bo'ylab bepul yetqazib berish - alijahon.uz
+    </title>
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="{% static 'apps/fav-icon.png' %}">
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'apps/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Font Awesome-->
+    <link href="{% static 'apps/all.min.css' %}" rel="stylesheet">
+    <link href="{% static 'apps/icofont.min.css' %}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'apps/style.css' %}" rel="stylesheet">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="{% static 'apps/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'apps/owl.theme.css' %}">
+    <link rel="manifest" href="{% static 'apps/manifest.json' %}">
+
+    <!-- Modern UI Styles -->
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --primary-dark: #4338ca;
+            --primary-light: #818cf8;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --info-color: #3b82f6;
+            --dark-bg: #1e293b;
+            --light-bg: #f8fafc;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        * {
+            transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f8fafc;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+        }
+
+        .card:hover {
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-4px);
+        }
+
+        .btn {
+            border-radius: 12px;
+            padding: 10px 24px;
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4);
+        }
+
+        .form-control, .form-select {
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            padding: 12px 16px;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        .badge {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .table {
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .table thead {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .card {
+                margin-bottom: 20px;
+            }
+
+            .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .table {
+                font-size: 12px;
+            }
+
+            .col-md-3, .col-md-9 {
+                padding: 0 10px;
+            }
+        }
+    </style>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('{% static 'apps/js/sw.js' %}')
+                .then(function (reg) {
+                    console.log("Service Worker ro'yxatdan o'tdi!", reg);
+                })
+                .catch(function (err) {
+                    console.log("Service Worker xatosi!", err);
+                });
+        }
+    </script>
+
+
+    <link rel="stylesheet" href="{% static 'apps/index_style.css' %}">
+
+</head>
+<body>
+
+
+<style>
+    .modern-header {
+        background: white;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .modern-navbar {
+        padding: 0;
+    }
+
+    .navbar-brand-modern {
+        padding: 12px 0;
+    }
+
+    .navbar-brand-modern img {
+        height: 45px;
+        width: auto;
+        transition: transform 0.3s ease;
+    }
+
+    .navbar-brand-modern:hover img {
+        transform: scale(1.05);
+    }
+
+    .nav-link-modern {
+        padding: 20px 16px !important;
+        font-weight: 600;
+        color: #475569 !important;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .nav-item.dropdown.mega-menu {
+        position: static;
+    }
+
+    .nav-item.dropdown.profile-dropdown-nav {
+        position: relative;
+    }
+
+    .nav-link-modern::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 3px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        transition: width 0.3s ease;
+    }
+
+    .nav-link-modern:hover,
+    .nav-link-modern.active {
+        color: #667eea !important;
+    }
+
+    .nav-link-modern:hover::after {
+        width: 80%;
+    }
+
+    .search-box-header {
+        position: relative;
+        width: 400px;
+        max-width: 100%;
+    }
+
+    .search-box-header input {
+        width: 100%;
+        padding: 10px 45px 10px 20px;
+        border: 2px solid #e2e8f0;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+    }
+
+    .search-box-header input:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        outline: none;
+    }
+
+    .search-box-header button {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        color: white;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .profile-dropdown-modern {
+        border-radius: 16px !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+        border: none !important;
+        padding: 8px 0;
+        margin-top: 10px;
+        min-width: 250px;
+        right: 0 !important;
+        left: auto !important;
+    }
+
+    .dropdown-item-modern {
+        padding: 12px 24px;
+        font-weight: 500;
+        color: #475569;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .dropdown-item-modern i {
+        width: 20px;
+        font-size: 18px;
+        color: #667eea;
+    }
+
+    .dropdown-item-modern:hover {
+        background: linear-gradient(90deg, rgba(102, 126, 234, 0.08) 0%, transparent 100%);
+        color: #667eea;
+    }
+
+    .profile-pic-modern {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        border: 2px solid #667eea;
+        object-fit: cover;
+    }
+
+    .mega-dropdown-modern {
+        border-radius: 16px !important;
+        border: none !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+        padding: 30px 20px !important;
+        margin-top: 10px !important;
+        width: 90% !important;
+        max-width: 1200px !important;
+        left: 5% !important;
+        right: 5% !important;
+    }
+
+    .mega-list-modern {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .mega-list-modern a {
+        padding: 8px 12px;
+        color: #475569;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        font-size: 13px;
+        white-space: nowrap;
+        display: block;
+    }
+
+    .mega-list-modern a:hover {
+        background: linear-gradient(90deg, rgba(102, 126, 234, 0.08) 0%, transparent 100%);
+        color: #667eea;
+        transform: translateX(4px);
+    }
+
+    .dropdown-toggle::after {
+        display: none;
+    }
+
+    .navbar-toggler-modern {
+        border: 2px solid #667eea;
+        padding: 8px 12px;
+        border-radius: 8px;
+    }
+
+    @media (max-width: 992px) {
+        .search-box-header {
+            width: 100%;
+            margin: 16px 0;
+        }
+
+        .nav-link-modern {
+            padding: 12px 16px !important;
+        }
+
+        .nav-link-modern::after {
+            display: none;
+        }
+
+        .mega-dropdown-modern {
+            min-width: 100% !important;
+            left: 0 !important;
+            transform: none !important;
+            padding: 16px !important;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .mega-dropdown-modern .row {
+            flex-direction: column;
+        }
+
+        .mega-dropdown-modern .col-lg-2 {
+            width: 100%;
+        }
+    }
+</style>
+
+<div class="modern-header">
+    <nav class="navbar navbar-expand-lg navbar-light modern-navbar">
+        <div class="container">
+            <a class="navbar-brand navbar-brand-modern" href="/">
+                <img src="{% static 'apps/alijahon.png' %}" alt="Alijahon.uz">
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-modern" type="button" data-toggle="collapse"
+                    data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-modern" href="/">
+                            <i class="icofont-ui-home"></i> Bosh sahifa
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown mega-menu">
+                        <a class="nav-link nav-link-modern dropdown-toggle" href="#" data-toggle="dropdown">
+                            <i class="icofont-list"></i> Kategoriyalar
+                        </a>
+                        <div class="dropdown-menu mega-dropdown-modern">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-4 col-sm-6">
+                                    <div class="mega-list-modern">
+
+                                        <a href="/category/uy-uchun">
+                                            Uy ruzg&#x27;or uchun maxsulotlar
+                                        </a>
+
+                                        <a href="/category/bolalar-uchun">
+                                            Bolalar uchun maxsulotlar
+                                        </a>
+
+                                        <a href="/category/sovga">
+                                            Sovg&#x27;alar
+                                        </a>
+
+                                        <a href="/category/ayollar">
+                                            Ayollar uchun maxsulotlar
+                                        </a>
+
+                                        <a href="/category/davolovchi-mahsulotlar">
+                                            Davolovchi mahsulotlar
+                                        </a>
+
+                                        <a href="/category/erkaklar-uchun">
+                                            Erkaklar uchun maxsulotlar
+                                        </a>
+
+                                        <a href="/category/fitnes">
+                                            Fitnes trenajorlar
+                                        </a>
+
+                                        <a href="/category/davolovchi-mazlar">
+                                            Davolovchi mazlar
+                                        </a>
+
+                                        <a href="/category/moshina-uchun">
+                                            Moshina uchun
+                                        </a>
+
+                                        <a href="/category/kitoblar">
+                                            Kitoblar
+                                        </a>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-sm-6">
+                                    <div class="mega-list-modern">
+
+                                        <a href="/category/aqlli-soatlar">
+                                            soatlar
+                                        </a>
+
+                                        <a href="/category/atir">
+                                            Atirlar
+                                        </a>
+
+                                        <a href="/category/yangi-yel-maxsulotlari">
+                                            Yangi yil maxsulotlari
+                                        </a>
+
+                                        <a href="/category/eliktironika">
+                                            Elektironika
+                                        </a>
+
+                                        <a href="/category/kozoynaklar">
+                                            Kozoynaklar
+                                        </a>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-sm-6">
+                                    <div class="mega-list-modern">
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-sm-6">
+                                    <div class="mega-list-modern">
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-sm-6">
+                                    <div class="mega-list-modern">
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-sm-6">
+                                    <div class="mega-list-modern">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-modern" href="/category">
+                            <i class="icofont-shopping-cart"></i> Do'kon
+                        </a>
+                    </li>
+                </ul>
+
+                <form action="/search" method="POST" class="search-box-header" autocomplete="off">
+                    <input type="hidden" name="csrfmiddlewaretoken"
+                           value="1RLodsuIg7OuRhcbUZ7zyFXlMEvs02d04p4yPWhkyjday1Oqy1UhYywtH4Z64xy0">
+                    <input id="search-input" name="product" type="search" placeholder="Mahsulot qidirish..."/>
+                    <button type="submit">
+                        <i class="icofont-search"></i>
+                    </button>
+                </form>
+
+                <ul class="navbar-nav ml-auto">
+
+                    <li class="nav-item">
+                        <a href="#" data-target="#login" data-toggle="modal" class="nav-link nav-link-modern">
+                            <i class="icofont-ui-user"></i> Kirish
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<div class="modal fade login-modal-main show" id="login" style="padding-right: 8px; display: none;"
+     aria-modal="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="login-modal">
+                    <div class="row">
+                        <div class="col-lg-6 d-flex align-items-center">
+                            <div class="login-modal-left p-4 text-center pl-5">
+                                <img src="{% static 'apps/alijahon.png' %}" alt="..."
+                                     style="width: 300px;">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <button type="button" class="close close-top-right position-absolute"
+                                    data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"><i class="icofont-close-line"></i></span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            <ul class="mt-4 mr-4 nav nav-tabs-login float-right position-absolute"
+                                role="tablist">
+                                <li>
+                                    <a class="nav-link-login active" data-toggle="tab" href="#login-form"
+                                       role="tab"><i class="icofont-ui-lock"></i> Login</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link-login" data-toggle="tab" href="#register" role="tab"><i
+                                            class="icofont icofont-pencil"></i> Ro'yxatdan o'tish</a>
+                                </li>
+                            </ul>
+                            <div class="login-modal-right p-4">
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="login-form" role="tabpanel">
+                                        <form action="/login" method="post">
+                                            <input type="hidden" name="csrfmiddlewaretoken"
+                                                   value="1RLodsuIg7OuRhcbUZ7zyFXlMEvs02d04p4yPWhkyjday1Oqy1UhYywtH4Z64xy0">
+                                            <h5 class="heading-design-h5 text-dark">Login</h5>
+                                            <fieldset class="form-group mt-4">
+                                                <label>Telefon</label>
+                                                <input type="text" id="phone-mask" class="form-control"
+                                                       name="phone_number" placeholder="Telefon raqam">
+                                            </fieldset>
+                                            <fieldset class="form-group">
+                                                <label>Parol</label>
+                                                <input type="password" class="form-control" name="password"
+                                                       placeholder="****">
+                                            </fieldset>
+                                            <fieldset class="form-group">
+                                                <button type="submit" class="btn btn-lg btn-primary btn-block">
+                                                    Kirish
+                                                </button>
+                                            </fieldset>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input"
+                                                       id="customCheck1">
+                                                <label class="custom-control-label" for="customCheck1">
+                                                    Eslab qolish
+                                                </label>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane" id="register" role="tabpanel">
+                                        <form action="/register" method="post">
+                                            <input type="hidden" name="csrfmiddlewaretoken"
+                                                   value="1RLodsuIg7OuRhcbUZ7zyFXlMEvs02d04p4yPWhkyjday1Oqy1UhYywtH4Z64xy0">
+                                            <h5 class="heading-design-h5 text-dark">Register</h5>
+                                            <fieldset class="form-group mt-4">
+                                                <label>Telefon</label>
+                                                <input type="text" id="phone-mask-two" name="phone_number"
+                                                       class="form-control" placeholder="Telefon raqam">
+                                            </fieldset>
+                                            <fieldset class="form-group">
+                                                <label>Parol</label>
+                                                <input type="password" name="password" class="form-control"
+                                                       placeholder="***">
+                                            </fieldset>
+                                            <fieldset class="form-group">
+                                                <label>Parolni takrorlash</label>
+                                                <input type="password" name="conf_password" class="form-control"
+                                                       placeholder="***">
+                                            </fieldset>
+                                            <fieldset class="form-group">
+                                                <button type="submit" class="btn btn-lg btn-primary btn-block">
+                                                    Yangi akkaunt ochish
+                                                </button>
+                                            </fieldset>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input"
+                                                       id="customCheck2">
+                                                <label class="custom-control-label" for="customCheck2">
+                                                    <a href="#">Barcha shartlar</a>ga roziman
+                                                </label>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.js"></script>
+<script>
+    $('#phone-mask').inputmask({
+        "mask": "+\\9\\98(99) 999-99-99"
+    });
+    $('#phone-mask-two').inputmask({
+        "mask": "+\\9\\98(99) 999-99-99"
+    });
+</script>
+
+
+<!-- Hero Banner Section -->
+<div class="hero-section">
+    <div class="container-fluid px-0">
+        <div id="owl-carousel-one" class="owl-carousel hero-carousel">
+
+            <div class="item banner-item">
+                <img class="img-fluid w-100 banner-image"
+                     src="/media/banners/slider2.png"
+                     alt="Banner 1">
+            </div>
+
+            <div class="item banner-item">
+                <img class="img-fluid w-100 banner-image"
+                     src="/media/banners/slider1.png"
+                     alt="Banner 2">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Categories Grid Section -->
+<section class="categories-section py-4">
+    <div class="container">
+        <div class="row g-3">
+
+            <div class="col-4 col-md-4 col-lg-3">
+                <a href="/category/uy-uchun" class="category-card">
+                    <div class="category-image-wrapper">
+
+                        <img class="category-image"
+                             src="/media/category_images/7AA93102-81A6-41E5-9DDA-9CA2C6427E3B.png"
+                             alt="Uy ruzg&#x27;or uchun maxsulotlar">
+
+                    </div>
+                    <h6 class="category-title">Uy ruzg&#x27;or uchun maxsulotlar</h6>
+                </a>
+            </div>
+
+            <div class="col-4 col-md-4 col-lg-3">
+                <a href="/category/bolalar-uchun" class="category-card">
+                    <div class="category-image-wrapper">
+
+                        <img class="category-image"
+                             src="/media/category_images/9FAD31AD-312A-44A0-9AC3-247DA89DE70E.png"
+                             alt="Bolalar uchun maxsulotlar">
+
+                    </div>
+                    <h6 class="category-title">Bolalar uchun maxsulotlar</h6>
+                </a>
+            </div>
+
+            <div class="col-4 col-md-4 col-lg-3">
+                <a href="/category/sovga" class="category-card">
+                    <div class="category-image-wrapper">
+
+                        <img class="category-image" src="/media/category_images/IMG_5899.jpeg"
+                             alt="Sovg&#x27;alar">
+
+                    </div>
+                    <h6 class="category-title">Sovg&#x27;alar</h6>
+                </a>
+            </div>
+
+            <div class="col-4 col-md-4 col-lg-3">
+                <a href="/category/ayollar" class="category-card">
+                    <div class="category-image-wrapper">
+
+                        <img class="category-image"
+                             src="/media/category_images/DD1F5E6F-C0C2-46AB-B37A-4EE53C319728.png"
+                             alt="Ayollar uchun maxsulotlar">
+
+                    </div>
+                    <h6 class="category-title">Ayollar uchun maxsulotlar</h6>
+                </a>
+            </div>
+
+            <div class="col-4 col-md-4 col-lg-3">
+                <a href="/category/davolovchi-mahsulotlar" class="category-card">
+                    <div class="category-image-wrapper">
+
+                        <img class="category-image"
+                             src="/media/category_images/A2ABC07B-AE08-4D84-B8DA-C21DA27DFCBC.jpeg"
+                             alt="Davolovchi mahsulotlar">
+
+                    </div>
+                    <h6 class="category-title">Davolovchi mahsulotlar</h6>
+                </a>
+            </div>
+
+            <div class="col-4 col-md-4 col-lg-3">
+                <a href="/category/erkaklar-uchun" class="category-card">
+                    <div class="category-image-wrapper">
+
+                        <img class="category-image" src="/media/category_images/IMG_5903.jpeg"
+                             alt="Erkaklar uchun maxsulotlar">
+
+                    </div>
+                    <h6 class="category-title">Erkaklar uchun maxsulotlar</h6>
+                </a>
+            </div>
+
+            <div class="col-4 col-md-4 col-lg-3">
+                <a href="/category/fitnes" class="category-card">
+                    <div class="category-image-wrapper">
+
+                        <img class="category-image"
+                             src="/media/category_images/6F1333A3-9765-4216-AE0A-A576B81DB510.png"
+                             alt="Fitnes trenajorlar">
+
+                    </div>
+                    <h6 class="category-title">Fitnes trenajorlar</h6>
+                </a>
+            </div>
+
+            <div class="col-4 col-md-4 col-lg-3">
+                <a href="/category/davolovchi-mazlar" class="category-card">
+                    <div class="category-image-wrapper">
+
+                        <img class="category-image"
+                             src="/media/category_images/1561E941-0F91-4C87-BCAA-49DD49C48E0B.png"
+                             alt="Davolovchi mazlar">
+
+                    </div>
+                    <h6 class="category-title">Davolovchi mazlar</h6>
+                </a>
+            </div>
+
+            <div class="col-4 col-md-4 col-lg-3">
+                <a href="/category/moshina-uchun" class="category-card">
+                    <div class="category-image-wrapper">
+
+                        <img class="category-image"
+                             src="/media/category_images/2233F793-0315-4552-ACB8-C7522FDDEC29.png"
+                             alt="Moshina uchun">
+
+                    </div>
+                    <h6 class="category-title">Moshina uchun</h6>
+                </a>
+            </div>
+
+            <div class="col-4 col-md-4 col-lg-3">
+                <a href="/category/kitoblar" class="category-card">
+                    <div class="category-image-wrapper">
+
+                        <img class="category-image" src="/media/category_images/IMG_5800.jpeg"
+                             alt="Kitoblar">
+
+                    </div>
+                    <h6 class="category-title">Kitoblar</h6>
+                </a>
+            </div>
+
+            <div class="col-4 col-md-4 col-lg-3">
+                <a href="/category/aqlli-soatlar" class="category-card">
+                    <div class="category-image-wrapper">
+
+                        <img class="category-image" src="/media/category_images/IMG_5900_nK6Sxod.jpeg"
+                             alt="soatlar">
+
+                    </div>
+                    <h6 class="category-title">soatlar</h6>
+                </a>
+            </div>
+
+            <div class="col-4 col-md-4 col-lg-3">
+                <a href="/category/atir" class="category-card">
+                    <div class="category-image-wrapper">
+
+                        <img class="category-image" src="/media/category_images/IMG_5901.jpeg"
+                             alt="Atirlar">
+
+                    </div>
+                    <h6 class="category-title">Atirlar</h6>
+                </a>
+            </div>
+
+            <div class="col-4 col-md-4 col-lg-3">
+                <a href="/category/yangi-yel-maxsulotlari" class="category-card">
+                    <div class="category-image-wrapper">
+
+                        <img class="category-image" src="{% static 'apps/cart.png' %}"
+                             alt="Yangi yil  maxsulotlari">
+
+                    </div>
+                    <h6 class="category-title">Yangi yil maxsulotlari</h6>
+                </a>
+            </div>
+
+            <div class="col-4 col-md-4 col-lg-3">
+                <a href="/category/eliktironika" class="category-card">
+                    <div class="category-image-wrapper">
+
+                        <img class="category-image" src="/media/category_images/IMG_1699.webp"
+                             alt="Elektironika">
+
+                    </div>
+                    <h6 class="category-title">Elektironika</h6>
+                </a>
+            </div>
+
+            <div class="col-4 col-md-4 col-lg-3">
+                <a href="/category/kozoynaklar" class="category-card">
+                    <div class="category-image-wrapper">
+
+                        <img class="category-image" src="/media/category_images/IMG_6866.jpeg"
+                             alt="Kozoynaklar">
+
+                    </div>
+                    <h6 class="category-title">Kozoynaklar</h6>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Best Sellers Section -->
+<section class="products-section py-5 bg-light">
+    <div class="container">
+        <div class="section-header mb-4">
+            <h2 class="section-title">Eng ko'p sotiladigan</h2>
+            <a href="/category" class="view-all-link">
+                Barchasini ko'rish
+                <i class="icofont-rounded-right"></i>
+            </a>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <a href="/product-detail/relax-masajyor"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2022/03/15/images_z44uAit.webp"
+                                 alt="Relax masajyor"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/relax-masajyor">
+                                Relax masajyor
+                            </a>
+                        </h6>
+                        <p class="product-price">129 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <a href="/product-detail/soqol-uchun-maxsus-to%CA%BBplam"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2023/04/29/IMG_4669.webp"
+                                 alt="Beard oil–Beart cutter"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/soqol-uchun-maxsus-to%CA%BBplam">
+                                Beard oil–Beart cutter
+                            </a>
+                        </h6>
+                        <p class="product-price">157 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <a href="/product-detail/rozvaya-jenshina-clean-point"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2024/08/03/IMG_1920.webp"
+                                 alt="Rozvaya Jenshina Clean Point"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/rozvaya-jenshina-clean-point">
+                                Rozvaya Jenshina Clean Point
+                            </a>
+                        </h6>
+                        <p class="product-price">69 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <a href="/product-detail/armeyiski-maska"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2023/10/21/IMG_0512.webp"
+                                 alt="Armeyiski maska"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/armeyiski-maska">
+                                Armeyiski maska
+                            </a>
+                        </h6>
+                        <p class="product-price">69 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <a href="/product-detail/46-big-nabor"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2023/11/29/IMG_0697.webp"
+                                 alt="46 BIG Nabor"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/46-big-nabor">
+                                46 BIG Nabor
+                            </a>
+                        </h6>
+                        <p class="product-price">169 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <a href="/product-detail/placenta-extract-gel"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2022/07/26/IMG_20220726_083734_357.webp"
+                                 alt="Placenta extract gel"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/placenta-extract-gel">
+                                Placenta extract gel
+                            </a>
+                        </h6>
+                        <p class="product-price">99 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <a href="/product-detail/quroni-karimning-mashhur-suralari-fazilati-1-2"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2025/02/21/IMG_8705.webp"
+                                 alt="Mashhur Suralar 2"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/quroni-karimning-mashhur-suralari-fazilati-1-2">
+                                Mashhur Suralar 2
+                            </a>
+                        </h6>
+                        <p class="product-price">89 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <a href="/product-detail/chuchvara-tugish"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2023/05/30/775DDCCE-AB08-465C-944C-881511B2783B.webp"
+                                 alt="CHUCHVARA TUGISH"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/chuchvara-tugish">
+                                CHUCHVARA TUGISH
+                            </a>
+                        </h6>
+                        <p class="product-price">99 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <a href="/product-detail/guruch-nabor"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2025/03/14/IMG_9150.webp"
+                                 alt="Guruch nabor !!"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/guruch-nabor">
+                                Guruch nabor !!
+                            </a>
+                        </h6>
+                        <p class="product-price">139 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <a href="/product-detail/supper-kislata"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2023/11/02/IMG_0555.webp"
+                                 alt="Supper Kislata  Mannol"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/supper-kislata">
+                                Supper Kislata Mannol
+                            </a>
+                        </h6>
+                        <p class="product-price">99 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <a href="/product-detail/oqartiruvchi-super-krem"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2023/07/29/C404BCF9-8750-4BEB-83AA-42BAB8379821.webp"
+                                 alt="Oqartiruvchi super krem"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/oqartiruvchi-super-krem">
+                                Oqartiruvchi super krem
+                            </a>
+                        </h6>
+                        <p class="product-price">59 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <a href="/product-detail/self-foaming-oqartiruvchi-1-2"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2026/04/24/IMG_6576.jpeg"
+                                 alt="SELF FOAMING oqartiruvchi"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/self-foaming-oqartiruvchi-1-2">
+                                SELF FOAMING oqartiruvchi
+                            </a>
+                        </h6>
+                        <p class="product-price">59 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <a href="/product-detail/chopper"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2021/12/06/IMG_4652.webp"
+                                 alt="Ko&#x27;pfunksiyalik High Speedy Chopper"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/chopper">
+                                Ko&#x27;pfunksiyalik High Speedy Chopper
+                            </a>
+                        </h6>
+                        <p class="product-price">207 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <a href="/product-detail/ajoyib-20xil-urugdan-yetiluvchi-gul"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2024/05/07/IMG_1626.webp"
+                                 alt="Ajoyib  urug&#x27;dan yetiluvchi gul ( 20  22 donali )"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/ajoyib-20xil-urugdan-yetiluvchi-gul">
+                                Ajoyib urug&#x27;dan yetiluvchi gul ( 20 22 donali )
+                            </a>
+                        </h6>
+                        <p class="product-price">59 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <a href="/product-detail/erkaklar-uchun-magnetli-ichki-kiyim-1"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2025/01/28/IMG_8226.webp"
+                                 alt="Erkaklar uchun magnetli ichki kiyim"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/erkaklar-uchun-magnetli-ichki-kiyim-1">
+                                Erkaklar uchun magnetli ichki kiyim
+                            </a>
+                        </h6>
+                        <p class="product-price">59 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <a href="/product-detail/mini-elektrik-dazmol"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2022/04/12/623ba2def0cc6385769626.webp"
+                                 alt="MINI ELEKTRIK DAZMOL"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/mini-elektrik-dazmol">
+                                MINI ELEKTRIK DAZMOL
+                            </a>
+                        </h6>
+                        <p class="product-price">119 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- New Products Section -->
+<section class="products-section py-5">
+    <div class="container">
+        <div class="section-header mb-4">
+            <h2 class="section-title">Yangi mahsulotlar</h2>
+            <a href="/category" class="view-all-link">
+                Barchasini ko'rish
+                <i class="icofont-rounded-right"></i>
+            </a>
+        </div>
+
+        <div class="owl-carousel owl-carousel-category owl-theme">
+
+            <div class="item">
+                <div class="product-card">
+                    <a href="/product-detail/2-talig-moshina-ventilyator"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2026/05/14/IMG_7283.jpeg"
+                                 alt="2 talik moshina ventilyator"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/2-talig-moshina-ventilyator">
+                                2 talik moshina ventilyator
+                            </a>
+                        </h6>
+                        <p class="product-price">89 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="product-card">
+                    <a href="/product-detail/ayollar-uchun-granula"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2026/05/12/IMG_7259.jpeg"
+                                 alt="Ayollar uchun Granula"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/ayollar-uchun-granula">
+                                Ayollar uchun Granula
+                            </a>
+                        </h6>
+                        <p class="product-price">69 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="product-card">
+                    <a href="/product-detail/tonalniy-stik-1"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2026/05/11/IMG_7237.webp"
+                                 alt="Tonalniy Stik"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/tonalniy-stik-1">
+                                Tonalniy Stik
+                            </a>
+                        </h6>
+                        <p class="product-price">89 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="product-card">
+                    <a href="/product-detail/frangarse-asvijitel"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2026/05/09/IMG_7223.jpeg"
+                                 alt="Frangarse asvijitel"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/frangarse-asvijitel">
+                                Frangarse asvijitel
+                            </a>
+                        </h6>
+                        <p class="product-price">129 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="product-card">
+                    <a href="/product-detail/baxtga-yullanma"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2026/05/07/IMG_7181.jpeg"
+                                 alt="Baxtga yullanma"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/baxtga-yullanma">
+                                Baxtga yullanma
+                            </a>
+                        </h6>
+                        <p class="product-price">99 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="product-card">
+                    <a href="/product-detail/13-xil-5-gr-li-atrlar-tuplami"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2026/05/01/IMG_7096.webp"
+                                 alt="13 xil 5 gramli  atrlar tuplami"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/13-xil-5-gr-li-atrlar-tuplami">
+                                13 xil 5 gramli atrlar tuplami
+                            </a>
+                        </h6>
+                        <p class="product-price">99 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="product-card">
+                    <a href="/product-detail/osmali-shanoun"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2026/04/28/IMG_7081.webp"
+                                 alt="Osmali shanpun"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/osmali-shanoun">
+                                Osmali shanpun
+                            </a>
+                        </h6>
+                        <p class="product-price">79 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="product-card">
+                    <a href="/product-detail/elastic-firming-retinol"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2026/04/28/IMG_7079.jpeg"
+                                 alt="Elastic firming retinol"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/elastic-firming-retinol">
+                                Elastic firming retinol
+                            </a>
+                        </h6>
+                        <p class="product-price">69 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="product-card">
+                    <a href="/product-detail/bolalar-uchun-mujizaviy-sharcha"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2026/04/26/IMG_7040.jpeg"
+                                 alt="Bolalar uchun mujizaviy sharcha"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/bolalar-uchun-mujizaviy-sharcha">
+                                Bolalar uchun mujizaviy sharcha
+                            </a>
+                        </h6>
+                        <p class="product-price">59 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="product-card">
+                    <a href="/product-detail/keratin-soch-spreyi"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2026/04/25/IMG_7023.jpeg"
+                                 alt="Keratin soch spreyi"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/keratin-soch-spreyi">
+                                Keratin soch spreyi
+                            </a>
+                        </h6>
+                        <p class="product-price">69 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="product-card">
+                    <a href="/product-detail/nicotex"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2026/04/25/IMG_7018.jpeg"
+                                 alt="Nicotex"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/nicotex">
+                                Nicotex
+                            </a>
+                        </h6>
+                        <p class="product-price">99 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="product-card">
+                    <a href="/product-detail/self-foaming-oqartiruvchi-1-2"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2026/04/24/IMG_6576.jpeg"
+                                 alt="SELF FOAMING oqartiruvchi"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/self-foaming-oqartiruvchi-1-2">
+                                SELF FOAMING oqartiruvchi
+                            </a>
+                        </h6>
+                        <p class="product-price">59 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="product-card">
+                    <a href="/product-detail/varicose-crem"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2026/04/22/IMG_6979.jpeg"
+                                 alt="Varicose crem"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/varicose-crem">
+                                Varicose crem
+                            </a>
+                        </h6>
+                        <p class="product-price">99 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="product-card">
+                    <a href="/product-detail/pheramone"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2026/04/20/IMG_6446.jpeg"
+                                 alt="Pheramone"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/pheramone">
+                                Pheramone
+                            </a>
+                        </h6>
+                        <p class="product-price">59 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="product-card">
+                    <a href="/product-detail/sevishganlar-uchun-vibratsiyasz-braslet"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2026/04/20/IMG_6963.jpeg"
+                                 alt="Sevishganlar uchun vibratsiyasz braslet"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/sevishganlar-uchun-vibratsiyasz-braslet">
+                                Sevishganlar uchun vibratsiyasz braslet
+                            </a>
+                        </h6>
+                        <p class="product-price">75 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="product-card">
+                    <a href="/product-detail/trendagi-gentra"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2026/04/19/IMG_6951.jpeg"
+                                 alt="Trendagi Gentra"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/trendagi-gentra">
+                                Trendagi Gentra
+                            </a>
+                        </h6>
+                        <p class="product-price">109 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="product-card">
+                    <a href="/product-detail/magic-body-fermin-oil"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2026/04/19/IMG_6943.jpeg"
+                                 alt="Magic Body Fermin Oil"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/magic-body-fermin-oil">
+                                Magic Body Fermin Oil
+                            </a>
+                        </h6>
+                        <p class="product-price">99 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="product-card">
+                    <a href="/product-detail/360-musiqali-moshina"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2026/04/19/IMG_6941.jpeg"
+                                 alt="360 musiqali moshina"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/360-musiqali-moshina">
+                                360 musiqali moshina
+                            </a>
+                        </h6>
+                        <p class="product-price">99 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="product-card">
+                    <a href="/product-detail/smart-vifi-camera"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2026/04/19/IMG_6933.jpeg"
+                                 alt="Smart Vifi Camera"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/smart-vifi-camera">
+                                Smart Vifi Camera
+                            </a>
+                        </h6>
+                        <p class="product-price">89 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="product-card">
+                    <a href="/product-detail/feramon-49"
+                       class="product-image-link">
+                        <div class="product-image-wrapper">
+                            <img class="product-image"
+                                 src="media/products/2026/04/19/IMG_6932.jpeg"
+                                 alt="Feramon 49"
+                                 loading="lazy">
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <h6 class="product-title">
+                            <a href="/product-detail/feramon-49">
+                                Feramon 49
+                            </a>
+                        </h6>
+                        <p class="product-price">49 000 so'm</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<style>
+    .modern-footer {
+        background: white;
+        border-top: 1px solid #e2e8f0;
+        padding: 0;
+        margin-top: 60px;
+    }
+
+    .footer-copyright {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 24px 0;
+        color: white;
+    }
+
+    .copyright-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .copyright-text {
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .copyright-text a {
+        color: white;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .copyright-text a:hover {
+        opacity: 0.8;
+    }
+
+    .footer-links {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+
+    .footer-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        transition: all 0.3s ease;
+    }
+
+    .footer-links a:hover {
+        opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+        .modern-footer {
+            margin-top: 40px;
+        }
+
+        .footer-copyright {
+            padding: 20px 0;
+        }
+
+        .copyright-content {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .footer-links {
+            justify-content: center;
+        }
+    }
+</style>
+
+<footer class="modern-footer">
+    <div class="footer-copyright">
+        <div class="container">
+            <div class="copyright-content">
+                <p class="copyright-text">
+                    <a href="/">Alijahon.uz</a> © 2026 Barcha huquqlar himoyalangan
+                </p>
+                <div class="footer-links">
+                    <a href="/">Bosh sahifa</a>
+                    <a href="/category">Do'kon</a>
+                    <a href="#">Aloqa</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{% static 'apps/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="{% static 'apps/custom.js' %}"></script>
+<!-- Contact form JavaScript -->
+<!-- Do not edit these files! In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+<script src="{% static 'apps/jqBootstrapValidation.js' %}"></script>
+<script src="{% static 'apps/contact_me.js' %}"></script>
+<!-- Owl Carousel -->
+<script src="{% static 'apps/owl.carousel.js' %}"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.js"></script>
+<script>
+    $(document).ready(function () {
+        // Phone mask initialization
+        $('#phone-mask').inputmask({"mask": "+\\9\\98(99) 999-99-99"});
+        $('#phone-mask1').inputmask({"mask": "+\\9\\98(99) 999-99-99"});
+
+        // Owl Carousel initialization
+        $('.owl-carousel-category').owlCarousel({
+            loop: false,
+            margin: 15,
+            nav: true,
+            dots: false,
+            responsive: {
+                0: {items: 2},
+                576: {items: 3},
+                768: {items: 4},
+                992: {items: 5}
+            }
+        });
+    });
+</script>
+
+
+</body>
+</html>
