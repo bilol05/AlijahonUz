@@ -17,8 +17,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from apps.views import IndexView
+from apps.views import HomeViewL, AdminPageView, AdminPageMarketView, AdminPageRequestsView, AdminPageUrlsView, \
+    AdminPageStatsView, AdminPageCompetitionView, AdminPageWithdrawView, ProfileReferralView, ProfileSetttingsView
 
 urlpatterns = [
-    path("",IndexView.as_view()),
+    path("", HomeViewL.as_view()),
+    path("admin_page/", AdminPageView.as_view()),
+    path("admin_page/market", AdminPageMarketView.as_view()),
+    path("admin_page/requests", AdminPageRequestsView.as_view()),
+    path("admin_page/urls", AdminPageUrlsView.as_view()),
+    path("admin_page/stats",AdminPageStatsView.as_view()),
+    path("admin_page/competition",AdminPageCompetitionView.as_view()),
+    path("admin_page/withdraw",AdminPageWithdrawView.as_view()),
+    path("profile/referral",ProfileReferralView.as_view()),
+    path("profile/settings",ProfileSetttingsView.as_view()),
 ]
